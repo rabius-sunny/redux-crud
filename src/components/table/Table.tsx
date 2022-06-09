@@ -5,6 +5,9 @@ import TableHead from './TableHead'
 const Table = ({ todos }: any) => {
   const [tableData, setTableData] = useState(todos)
   const [search, setSearch] = useState('')
+  // eslint-disable-next-line
+  const [filter, setFilter] = useState<String | Boolean>('')
+  // const [filteredData, setFilteredData] = useState([])
 
   const columns = [
     { label: '#', accessor: 'id', sortable: true },
@@ -28,7 +31,10 @@ const Table = ({ todos }: any) => {
       setTableData(sorted)
     }
   }
-  let filteredData = tableData.filter((item: any) =>
+
+  // let filtered = tableData.filter((item: any) => item.completed === filter)
+
+  let searchedData = tableData.filter((item: any) =>
     item.title.toLowerCase().includes(search.toLowerCase())
   )
 
@@ -44,13 +50,18 @@ const Table = ({ todos }: any) => {
             placeholder='search here'
           />
         </div>
-        <div>
+        <div className='filter'>
           <h4>Filter</h4>
+          <select onChange={e => setFilter(Boolean(e.target.value))}>
+            <option value='all'>filter</option>
+            <option value='true'>completed</option>
+            <option value='false'>uncompleted</option>
+          </select>
         </div>
       </div>
       <table className='table'>
         <TableHead {...{ columns, handleSorting }} />
-        <TableBody {...{ columns, filteredData }} />
+        <TableBody {...{ columns, searchedData }} />
       </table>
     </div>
   )

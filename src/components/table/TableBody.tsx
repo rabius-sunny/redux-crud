@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { deleteTodo } from 'redux/actions/asyncActions'
 import { useAppDispatch } from 'redux/hooks/customReduxHooks'
 
-const TableBody = ({ filteredData }: any) => {
+const TableBody = ({ searchedData }: any) => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
 
@@ -14,7 +14,7 @@ const TableBody = ({ filteredData }: any) => {
 
   return (
     <tbody>
-      {filteredData.map((data: any) => {
+      {searchedData.map((data: any) => {
         return (
           <tr key={data.id}>
             <td>{data.id}</td>
