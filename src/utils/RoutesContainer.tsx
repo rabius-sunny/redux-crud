@@ -1,3 +1,4 @@
+import Navbar from 'components/Navbar'
 import React, { Suspense } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
@@ -10,16 +11,19 @@ export default function RoutesContainer({ children }: any) {
   return (
     <Router>
       <div className='main'>
-        <div>{children}</div>
-        <div>
-          <Suspense fallback={<div>Loading...</div>}>
-            <Routes>
-              <Route path='/' element={<Home />} />
-              <Route path='/create' element={<Create />} />
-              <Route path='/update/:id' element={<Update />} />
-              <Route path='/others' element={<Others />} />
-            </Routes>
-          </Suspense>
+        <div className='sidebar'>{children}</div>
+        <div className='content'>
+          <Navbar />
+          <div className='content__main'>
+            <Suspense fallback={<div>Loading...</div>}>
+              <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/create' element={<Create />} />
+                <Route path='/update/:id' element={<Update />} />
+                <Route path='/others' element={<Others />} />
+              </Routes>
+            </Suspense>
+          </div>
         </div>
       </div>
     </Router>

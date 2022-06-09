@@ -2,7 +2,9 @@
 @import 'styles/abstracts/variable';
 
 // components
-@import 'styles/components/layout.module';
+@import 'styles/components/layout';
+@import 'styles/components/table';
+@import 'styles/components/home';
 
 // utils
 @import 'styles/utils/spacing';

@@ -1,3 +1,26 @@
+import { useEffect } from 'react'
+import { loadUser } from 'redux/actions/asyncActions'
+import { useAppDispatch, useAppSelector } from 'redux/hooks/customReduxHooks'
+import Table from 'components/table/Table'
+import { IoCreateOutline } from 'react-icons/io5'
+import { useNavigate } from 'react-router-dom'
+
 export default function Home() {
-  return <h1>Home</h1>
+  const dispatch = useAppDispatch()
+  useEffect(() => {
+    dispatch(loadUser())
+  }, [dispatch])
+  const { todos, loading } = useAppSelector(state => state)
+  const navigate = useNavigate()
+  return (
+    <>
+      <div className='home__header'>
+        <h1>Todos Table</h1>
+        <button onClick={() => navigate('/create')}>
+          <IoCreateOutline className='icon' />
+        </button>
+      </div>
+      {loading ? <div>Loading...</div> : <Table todos={todos.slice(0, 10)} />}
+    </>
+  )
 }

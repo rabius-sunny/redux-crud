@@ -1,0 +1,17 @@
+.home__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    .icon {
+      height: 40px;
+      width: 40px;
+      color: #00b960;
+    }
+  }
+}

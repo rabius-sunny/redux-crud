@@ -1,0 +1,105 @@
+.table__container {
+  overflow-x: auto;
+
+  .options {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    label {
+      font-size: 1.3rem;
+      color: $black;
+      padding-right: 10px;
+    }
+
+    input {
+      background-color: #f1f3f4;
+      border: none;
+      font-size: 1.2rem;
+      padding: 10px 15px;
+      border-radius: 3px;
+      color: gray;
+      outline: 1px solid #80808071;
+    }
+
+    input:focus {
+      outline: 1px solid $primary;
+    }
+  }
+
+  .table {
+    width: 100%;
+    border-spacing: 0;
+  }
+
+  th {
+    background: #fff;
+    padding: 8px 10px;
+    border-bottom: 1px solid #1a1a1a;
+    font-weight: bold;
+    text-align: left;
+    font-size: 1.3rem;
+  }
+
+  .up {
+    background-image: url("../../assets/up_arrow.png");
+  }
+
+  .down {
+    background-image: url("../../assets/down_arrow.png");
+  }
+
+  .default {
+    background-image: url("../../assets/default.png");
+  }
+
+  .up,
+  .default,
+  .down {
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center right;
+  }
+
+  td {
+    border-top: 1px solid #ddd;
+    padding: 8px 20px;
+    font-size: 1.2rem;
+
+    button {
+      border: none;
+      padding: 10px;
+      border-radius: 4px;
+      background-color: #ff1953;
+      color: $white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      outline: 1px solid black;
+    }
+
+    button:first-child {
+      margin-right: 5px;
+      background-color: #00b960;
+    }
+  }
+
+  tbody tr:first-child td {
+    border-top: none;
+  }
+
+  tbody tr:nth-child(n) td {
+    background: #eff0f0;
+  }
+
+  tbody tr:nth-child(2n) td {
+    background: #fff;
+  }
+
+  .done {
+    text-decoration: line-through;
+    color: gray;
+  }
+}
