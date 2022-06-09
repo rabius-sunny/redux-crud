@@ -1,5 +1,17 @@
+import { useNavigate } from 'react-router-dom'
+import { deleteTodo } from 'redux/actions/asyncActions'
+import { useAppDispatch } from 'redux/hooks/customReduxHooks'
+
 const TableBody = ({ filteredData }: any) => {
-  console.log('tabledata', filteredData)
+  const navigate = useNavigate()
+  const dispatch = useAppDispatch()
+
+  const handleDelete = (id: Number) => {
+    if (window.confirm('Are you sure to delete the todo?')) {
+      dispatch(deleteTodo(id))
+    }
+  }
+
   return (
     <tbody>
       {filteredData.map((data: any) => {
@@ -11,8 +23,10 @@ const TableBody = ({ filteredData }: any) => {
               {data.completed ? 'done' : 'pending'}
             </td>
             <td>
-              <button onClick={() => console.log('data', data)}>Edit</button>
-              <button onClick={() => console.log('data', data)}>Delete</button>
+              <button onClick={() => navigate(`/update/${data.id}`)}>
+                Edit
+              </button>
+              <button onClick={() => handleDelete(data.id)}>Delete</button>
             </td>
           </tr>
         )

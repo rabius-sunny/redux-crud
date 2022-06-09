@@ -6,35 +6,18 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    label {
-      font-size: 1.3rem;
-      color: $black;
-      padding-right: 10px;
-    }
-
-    input {
-      background-color: #f1f3f4;
-      border: none;
-      font-size: 1.2rem;
-      padding: 10px 15px;
-      border-radius: 3px;
-      color: gray;
-      outline: 1px solid #80808071;
-    }
-
-    input:focus {
-      outline: 1px solid $primary;
-    }
   }
 
   .table {
     width: 100%;
     border-spacing: 0;
+    border: 1px solid $lite;
+    border-radius: 5px;
   }
 
   th {
-    background: #fff;
+    background: $primary;
+    color: $white;
     padding: 8px 10px;
     border-bottom: 1px solid #1a1a1a;
     font-weight: bold;
@@ -91,7 +74,7 @@
   }
 
   tbody tr:nth-child(n) td {
-    background: #eff0f0;
+    background: #7d48b114;
   }
 
   tbody tr:nth-child(2n) td {

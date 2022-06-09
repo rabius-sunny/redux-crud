@@ -1,6 +1,6 @@
-import axios from 'axios'
 import { Dispatch } from 'react'
 import { AnyAction } from 'redux'
+import TodoRequests from 'services/TodoRequests'
 import {
   getSingleTodo,
   getTodos,
@@ -9,34 +9,29 @@ import {
   todoUpdated
 } from './actionCreator'
 
-export const loadUser = () => {
+export const loadTodos = () => {
   return function (dispatch: Dispatch<AnyAction>) {
-    axios
-      .get(`${process.env.REACT_APP_API_SERVER}/todos`)
+    TodoRequests.getAllTodos()
       .then(data => {
-        console.log(data)
-        dispatch(getTodos(data.data))
+        dispatch(getTodos(data))
       })
       .catch(err => console.log(err))
   }
 }
 
-export const loadSingleUser = (id: Number) => {
+export const loadSingleTodo = (id: Number) => {
   return function (dispatch: Dispatch<AnyAction>) {
-    axios
-      .get(`${process.env.REACT_APP_API_SERVER}/todos/${id}`)
+    TodoRequests.getASingleTodo(id)
       .then(info => {
-        console.log(info)
-        dispatch(getSingleTodo(info.data))
+        dispatch(getSingleTodo(info))
       })
       .catch(err => console.log(err))
   }
 }
 
-export const createUser = (data: ITodo) => {
+export const createTodo = (data: ITodo) => {
   return function (dispatch: Dispatch<AnyAction>) {
-    axios
-      .post(`${process.env.REACT_APP_API_SERVER}/todos`, data)
+    TodoRequests.createATodo(data)
       .then(info => {
         console.log(info)
         dispatch(todoCreated())
@@ -45,10 +40,9 @@ export const createUser = (data: ITodo) => {
   }
 }
 
-export const updateUser = (id: Number, info: ITodo) => {
+export const updateTodo = (id: Number, info: ITodo) => {
   return function (dispatch: Dispatch<AnyAction>) {
-    axios
-      .put(`${process.env.REACT_APP_API_SERVER}/todos/${id}`, info)
+    TodoRequests.updateATodo(id, info)
       .then(res => {
         console.log(res)
         dispatch(todoUpdated())
@@ -57,15 +51,14 @@ export const updateUser = (id: Number, info: ITodo) => {
   }
 }
 
-export const deleteUser = (id: Number) => {
+export const deleteTodo = (id: Number) => {
   return function (dispatch: Dispatch<any>) {
-    axios
-      .delete(`${process.env.REACT_APP_API_SERVER}/todos/${id}`)
+    TodoRequests.deleteATodo(id)
       .then(info => {
         console.log(info)
         dispatch(todoDeleted())
         // For fetching the updated list again after deletion
-        dispatch(loadUser())
+        dispatch(loadTodos())
       })
       .catch(err => console.log(err))
   }

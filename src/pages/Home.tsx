@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { loadUser } from 'redux/actions/asyncActions'
+import { loadTodos } from 'redux/actions/asyncActions'
 import { useAppDispatch, useAppSelector } from 'redux/hooks/customReduxHooks'
 import Table from 'components/table/Table'
 import { IoCreateOutline } from 'react-icons/io5'
@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 export default function Home() {
   const dispatch = useAppDispatch()
   useEffect(() => {
-    dispatch(loadUser())
+    dispatch(loadTodos())
   }, [dispatch])
   const { todos, loading } = useAppSelector(state => state)
   const navigate = useNavigate()

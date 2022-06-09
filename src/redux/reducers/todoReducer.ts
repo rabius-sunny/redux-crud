@@ -2,7 +2,11 @@ import { ActionTypes } from '../actions/actionTypes'
 
 const initialState = {
   todos: [],
-  todo: {},
+  todo: {
+    id: '',
+    title: '',
+    completed: ''
+  },
   loading: true
 }
 

@@ -1,8 +1,7 @@
 interface ITodo {
-  id: Number
+  id?: Number
   title: String
-  body: String
-  userId: Number
+  completed: Boolean
 }
 
 interface IRoutes {
@@ -10,4 +9,9 @@ interface IRoutes {
   name: String
   path: any
   icon: any
+}
+
+interface ISubmitData {
+  title: String
+  completed: Number
 }
