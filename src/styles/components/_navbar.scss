@@ -1,0 +1,18 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+
+  h1 {
+    color: $primary;
+  }
+
+  .avatar {
+    font-size: 2rem;
+    background-color: $primary;
+    padding: 5px 16px;
+    color: $white;
+    border-radius: 50%;
+  }
+}

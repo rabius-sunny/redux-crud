@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from 'redux/hooks/customReduxHooks'
 import Table from 'components/table/Table'
 import { IoCreateOutline } from 'react-icons/io5'
 import { useNavigate } from 'react-router-dom'
+import CSkeleton from 'components/CSkeleton'
 
 export default function Home() {
   const dispatch = useAppDispatch()
@@ -20,7 +21,7 @@ export default function Home() {
           <IoCreateOutline className='icon' />
         </button>
       </div>
-      {loading ? <div>Loading...</div> : <Table todos={todos.slice(0, 10)} />}
+      {loading || !todos ? <CSkeleton /> : <Table todos={todos.slice(0, 10)} />}
     </>
   )
 }
